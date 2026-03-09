@@ -40,3 +40,6 @@ export const getCurrentUser = () =>
 // Product API
 export const getProducts = () => 
   axios.get('/products');
+
+export const deleteProduct = (productId) =>
+  axios.delete(`/products/${productId}`);

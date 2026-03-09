@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { getProducts } from '../services/api';
+import { deleteProduct, getProducts } from '../services/api';
 import { removeToken } from '../utils/auth';
 
 function Dashboard({ onLogout }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [deletingProductId, setDeletingProductId] = useState(null);
 
   useEffect(() => {
     fetchProducts();
@@ -26,6 +27,27 @@ function Dashboard({ onLogout }) {
   const handleLogout = () => {
     removeToken();
     onLogout();
+  };
+
+  const handleDeleteProduct = async (productId) => {
+    const confirmed = window.confirm('Are you sure you want to delete this product?');
+    if (!confirmed) {
+      return;
+    }
+
+    setError('');
+    setDeletingProductId(productId);
+    try {
+      await deleteProduct(productId);
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.product_id !== productId)
+      );
+    } catch (error) {
+      setError(error.response?.data?.detail || 'Error deleting product');
+      console.error('Error:', error);
+    } finally {
+      setDeletingProductId(null);
+    }
   };
 
   if (loading) {
@@ -109,7 +131,13 @@ function Dashboard({ onLogout }) {
                         <div className="action-buttons">
                           <button className="view-btn">👁️</button>
                           <button className="edit-btn">✏️</button>
-                          <button className="delete-btn">🗑️</button>
+                          <button
+                            className="delete-btn"
+                            onClick={() => handleDeleteProduct(product.product_id)}
+                            disabled={deletingProductId === product.product_id}
+                          >
+                            {deletingProductId === product.product_id ? 'Deleting...' : '🗑️'}
+                          </button>
                         </div>
                       </td>
                     </tr>
