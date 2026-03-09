@@ -1,0 +1,38 @@
+# Python
+backend/venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.so
+.env
+.venv/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Node / Frontend
+frontend/node_modules/
+frontend/frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Env (keep credentials out of repo)
+backend/.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
