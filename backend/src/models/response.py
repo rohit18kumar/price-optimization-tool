@@ -14,9 +14,6 @@ class UserResponse(BaseModel):
     role: str
     first_name: Optional[str] = None
     last_name: Optional[str] = None
-    
-    class Config:
-        from_attributes = True
 
 # Product Response Models
 class ProductResponse(BaseModel):
@@ -28,10 +25,7 @@ class ProductResponse(BaseModel):
     description: Optional[str] = None
     stock_available: int
     units_sold: int
-    customer_rating: Decimal
-    demand_forecast: int
+    customer_rating: Optional[Decimal] = None
+    demand_forecast: Optional[int] = None
     optimized_price: Optional[Decimal] = None
     created_at: datetime
-    
-    class Config:
-        from_attributes = True

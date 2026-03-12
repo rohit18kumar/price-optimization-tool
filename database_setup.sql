@@ -29,10 +29,12 @@ CREATE TABLE products (
     units_sold INTEGER DEFAULT 0,
     customer_rating DECIMAL(3, 2) DEFAULT 0.00 CHECK (customer_rating >= 0 AND customer_rating <= 5),
     demand_forecast INTEGER DEFAULT 0,
+    forecast_method VARCHAR(20) DEFAULT 'estimated',
     optimized_price DECIMAL(10, 2),
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
 );
+
 
 -- Create Indexes for Performance
 CREATE INDEX idx_products_category ON products(category);

@@ -120,11 +120,224 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .dashboard-header h1 {
   color: #2d3748;
   font-size: 24px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  background: #f7fafc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.nav-btn.active {
+  background: #4299e1;
+  color: white;
+  border-color: #4299e1;
+}
+
+.forecast-btn, .optimize-btn {
+  padding: 8px 16px;
+  background: #38a169;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.forecast-btn:disabled, .optimize-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.charts-toggle-btn {
+  padding: 8px 16px;
+  background: #edf2f7;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.charts-toggle-btn:hover {
+  background: #e2e8f0;
+}
+
+.last-calculated {
+  font-size: 13px;
+  color: #718096;
+}
+
+.cell-regression {
+  background: rgba(56, 161, 105, 0.15);
+}
+
+.forecast-warning {
+  cursor: help;
+}
+
+.cell-increase { background: rgba(72, 187, 120, 0.2); color: #276749; }
+.cell-decrease { background: rgba(245, 101, 101, 0.2); color: #c53030; }
+.cell-neutral { background: #edf2f7; color: #4a5568; }
+
+.optimization-section {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.optimization-section .subtitle {
+  font-size: 14px;
+  color: #718096;
+  margin-top: 4px;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 20px 30px;
+}
+
+.summary-cards .card {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.summary-cards .card-green { background: rgba(72, 187, 120, 0.15); border-color: #48bb78; }
+.summary-cards .card-red { background: rgba(245, 101, 101, 0.15); border-color: #e53e3e; }
+
+.card-label { display: block; font-size: 12px; color: #718096; margin-bottom: 4px; }
+.card-value { font-size: 20px; font-weight: 600; color: #2d3748; }
+
+.view-details-btn {
+  padding: 6px 12px;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.detail-modal {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.detail-modal h3 { margin-bottom: 16px; }
+.detail-modal p { margin-bottom: 10px; font-size: 14px; }
+.detail-modal .highlight { font-size: 16px; color: #2b6cb0; }
+.detail-modal .muted { font-size: 12px; color: #a0aec0; margin-top: 16px; }
+.close-detail-btn {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: #edf2f7;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Demand Forecast Charts */
+.demand-forecast-charts {
+  padding: 20px 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.charts-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: #2d3748;
+}
+
+.charts-how-it-works {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #4a5568;
+}
+
+.charts-how-it-works summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.charts-how-it-works p,
+.charts-how-it-works ul {
+  margin: 8px 0 0;
+}
+
+.charts-how-it-works code {
+  background: #edf2f7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.chart-container {
+  min-height: 320px;
+  position: relative;
+}
+
+.chart-container.bar-chart { min-height: 300px; }
+.chart-container.scatter-chart { min-height: 320px; }
+
+.charts-loading,
+.charts-error,
+.charts-empty {
+  padding: 20px;
+  text-align: center;
+  color: #718096;
+}
+
+.charts-error { color: #e53e3e; }
+
+.refresh-charts-btn {
+  padding: 8px 16px;
+  background: #edf2f7;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.refresh-charts-btn:hover {
+  background: #e2e8f0;
+}
+
+@media (max-width: 900px) {
+  .charts-row { grid-template-columns: 1fr; }
 }
 
 .header-actions {
@@ -303,4 +516,114 @@ body {
     width: 100%;
     justify-content: flex-start;
   }
+  
+  .summary-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #2d3748;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #a0aec0;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-btn {
+  padding: 8px 16px;
+  background: #edf2f7;
+  color: #4a5568;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-btn {
+  padding: 8px 16px;
+  background: #48bb78;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
