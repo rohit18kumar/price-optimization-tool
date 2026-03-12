@@ -22,4 +22,5 @@ class ProductCreate(BaseModel):
     selling_price: Decimal
     description: Optional[str] = None
     stock_available: Optional[int] = 0
+    units_sold: Optional[int] = 0
     customer_rating: Optional[Decimal] = 0.00

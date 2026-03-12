@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { login, signup } from '../services/api';
-import { setToken } from '../utils/auth';
 
 function Login({ onLogin }) {
   const [isSignup, setIsSignup] = useState(false);
@@ -32,11 +31,10 @@ function Login({ onLogin }) {
           role: 'buyer'
         });
       } else {
-        const response = await login({
+        await login({
           email: formData.email,
           password: formData.password
         });
-        setToken(response.data.access_token);
         onLogin();
       }
     } catch (error) {

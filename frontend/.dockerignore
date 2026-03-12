@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.git/
+.gitignore
+*.md
+eslint.config.js
+package-lock.json
